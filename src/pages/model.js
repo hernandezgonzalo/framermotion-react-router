@@ -1,59 +1,106 @@
 import React from "react";
-//Components
+import { motion } from "framer-motion";
 import ScrollForMore from "../components/scrollForMore";
-//Ease
 
-const Model = () => {
+const transition = {
+  delay: 0.2,
+  duration: 1.4,
+  ease: [0.6, 0.01, -0.05, 0.9]
+};
+
+const thumbnailVariants = (imageDetails) => ({
+  initial: {
+    y: "-50%",
+    height: imageDetails.height,
+    width: imageDetails.width
+  },
+  animate: {
+    y: 0,
+    width: "100%",
+    transition
+  }
+});
+
+const imageVariants = {
+  initial: { scale: 1.1 },
+  animate: { y: -700, transition }
+};
+
+const textVariants = {
+  animate: {
+    y: 0,
+    transition: {
+      delayChildren: 0.6,
+      staggerChildren: 0.04,
+      staggerDirection: -1
+    }
+  }
+};
+
+const letterVariants = {
+  initial: {
+    y: 400
+  },
+  animate: {
+    y: 0,
+    transition: { ease: [0.6, 0.01, -0.05, 0.9], duration: 1 }
+  }
+};
+
+const Model = ({ imageDetails }) => {
   return (
-    <div className='single'>
-      <div className='container fluid'>
-        <div className='row center top-row'>
-          <div className='top'>
-            <div className='details'>
-              <div className='location'>
-                <span>28.538336</span>
-                <span>-81.379234</span>
-              </div>
-              <div className='mua'>MUA: @mylifeascrystall</div>
-            </div>
-            <div className='model'>
-              <span className='first'>
-                <span>Y</span>
-                <span>a</span>
-                <span>s</span>
-                <span>m</span>
-                <span>e</span>
-                <span>e</span>
-                <span>n</span>
-              </span>
-              <span className='last'>
-                <span>T</span>
-                <span>a</span>
-                <span>r</span>
-                <span>i</span>
-                <span>q</span>
-              </span>
+    <div className="single">
+      <div className="container fluid">
+        <div className="row center top-row">
+          <div className="top">
+            <div className="model">
+              <motion.span
+                variants={textVariants}
+                initial="initial"
+                animate="animate"
+                className="first"
+              >
+                <motion.span variants={letterVariants}>H</motion.span>
+                <motion.span variants={letterVariants}>e</motion.span>
+                <motion.span variants={letterVariants}>l</motion.span>
+                <motion.span variants={letterVariants}>l</motion.span>
+                <motion.span variants={letterVariants}>o</motion.span>{" "}
+                <motion.span variants={letterVariants}>w</motion.span>
+                <motion.span variants={letterVariants}>o</motion.span>
+                <motion.span variants={letterVariants}>r</motion.span>
+                <motion.span variants={letterVariants}>l</motion.span>
+                <motion.span variants={letterVariants}>d</motion.span>
+              </motion.span>
             </div>
           </div>
         </div>
-        <div className='row bottom-row'>
-          <div className='bottom'>
-            <div className='image-container-single'>
-              <div className='thumbnail-single'>
-                <div className='frame-single'>
-                  <img src={require("../images/yasmeen.webp")} alt='an image' />
+        <div className="row bottom-row">
+          <div className="bottom">
+            <div className="image-container-single">
+              <motion.div
+                variants={thumbnailVariants(imageDetails)}
+                initial="initial"
+                animate="animate"
+                className="thumbnail-single"
+              >
+                <div className="frame-single">
+                  <motion.img
+                    variants={imageVariants}
+                    src={require("../images/yasmeen.webp")}
+                    alt="an image"
+                  />
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
           <ScrollForMore />
         </div>
       </div>
-      <div className='detailed-information'>
-        <div className='container'>
-          <div className='row'>
-            <h2 className='title'>
-              The insiration behind the artwork & <br /> what it means.
+      <div className="detailed-information">
+        <div className="container">
+          <div className="row">
+            <h2 className="title">
+              The inspiration behind the artwork & <br /> what it means.
             </h2>
             <p>
               Contrary to popular belief, Lorem Ipsum is not simply random text.
