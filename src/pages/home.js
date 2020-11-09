@@ -30,7 +30,7 @@ const Home = ({ imageDetails, image }) => (
               <div className="frame">
                 <Link to={`/model/yasmeen-tariq`}>
                   <ProgressiveImage
-                    src={require("../images/yasmeen.webp")}
+                    src={require("../images/photo.jpg")}
                     placeholder={require("../images/compressed-image.jpg")}
                   >
                     {(src) => (
@@ -46,11 +46,7 @@ const Home = ({ imageDetails, image }) => (
               </div>
             </div>
             <motion.div exit={{ opacity: 0 }} className="information">
-              <div className="title">Yasmeen Tariq</div>
-              <div className="location">
-                <span>28.538336</span>
-                <span>-81.379234</span>
-              </div>
+              <span>Press the image</span>
             </motion.div>
           </div>
         </div>
