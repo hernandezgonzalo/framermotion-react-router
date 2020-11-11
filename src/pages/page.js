@@ -1,6 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
-import ScrollForMore from "../components/scrollForMore";
+import { motion, useTransform, useViewportScroll } from "framer-motion";
 
 const transition = {
   delay: 0.2,
@@ -51,7 +50,10 @@ const letterVariants = {
   }
 };
 
-const Model = ({ imageDetails }) => {
+const Page = ({ imageDetails }) => {
+  const { scrollYProgress } = useViewportScroll();
+  const scale = useTransform(scrollYProgress, [0, 1], [1.1, 1.5]);
+
   return (
     <motion.div
       initial="initial"
@@ -62,7 +64,7 @@ const Model = ({ imageDetails }) => {
       <div className="container fluid">
         <div className="row center top-row">
           <div className="top">
-            <div className="model">
+            <div className="title">
               <motion.span variants={textVariants} className="first">
                 <motion.span variants={letterVariants}>H</motion.span>
                 <motion.span variants={letterVariants}>e</motion.span>
@@ -89,6 +91,7 @@ const Model = ({ imageDetails }) => {
               >
                 <div className="frame-single">
                   <motion.img
+                    style={{ scale }}
                     variants={imageVariants}
                     src={require("../images/photo.jpg")}
                     alt="an image"
@@ -141,4 +144,4 @@ const Model = ({ imageDetails }) => {
   );
 };
 
-export default Model;
+export default Page;

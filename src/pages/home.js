@@ -28,7 +28,7 @@ const Home = ({ imageDetails, image }) => (
               }}
             >
               <div className="frame">
-                <Link to={`/model/yasmeen-tariq`}>
+                <Link to={`/page`}>
                   <ProgressiveImage
                     src={require("../images/photo.jpg")}
                     placeholder={require("../images/compressed-image.jpg")}

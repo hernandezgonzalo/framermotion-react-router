@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Home from "./pages/home";
-import Model from "./pages/model";
+import Page from "./pages/page";
 import Header from "./components/header";
 import "./App.scss";
 
@@ -22,8 +22,8 @@ function App() {
           <Route exact path="/">
             <Home imageDetails={imageDetails} />
           </Route>
-          <Route exact path="/model/:id">
-            <Model imageDetails={imageDetails} />
+          <Route exact path="/page">
+            <Page imageDetails={imageDetails} />
           </Route>
         </Switch>
       </AnimatePresence>
